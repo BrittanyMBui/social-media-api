@@ -1,0 +1,27 @@
+{
+  "name": "smclone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrittanyMBui/social-media-app.git"
+  },
+  "author": "Brittany Bui",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrittanyMBui/social-media-app/issues"
+  },
+  "homepage": "https://github.com/BrittanyMBui/social-media-app#readme",
+  "dependencies": {
+    "apollo-server": "^2.24.1",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "graphql": "^15.5.0",
+    "mongoose": "^5.12.10"
+  }
+}
