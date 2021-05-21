@@ -19,8 +19,10 @@
   "homepage": "https://github.com/BrittanyMBui/social-media-app#readme",
   "dependencies": {
     "apollo-server": "^2.24.1",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^9.0.2",
     "graphql": "^15.5.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.10"
   }
 }
