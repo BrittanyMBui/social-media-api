@@ -8,7 +8,8 @@ const connectionString = process.env.MONGODB_URI;
 
 const server = new ApolloServer({
     typeDefs,
-    resolvers
+    resolvers,
+    context: ({ req }) => ({ req })
 });
 
 mongoose

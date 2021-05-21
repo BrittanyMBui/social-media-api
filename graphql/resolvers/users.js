@@ -43,7 +43,6 @@ module.exports = {
                 token
             };
 
-            }
         },
         // USER REGISTER
         async register(
@@ -94,3 +93,4 @@ module.exports = {
            }
         }
     }
+}
