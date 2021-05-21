@@ -1,21 +1,10 @@
 require('dotenv').config();
 const { ApolloServer } = require('apollo-server');
-const gql = require('graphql-tag');
 const mongoose = require('mongoose');
 
+const typeDefs = require('./graphql/typeDefs');
+const resolvers = require('./graphql/resolvers');
 const connectionString = process.env.MONGODB_URI;
-
-const typeDefs = gql`
-    type Query{
-        sayHi: String!
-    }
-`
-
-const resolvers = {
-    Query: {
-        sayHi: () => 'Hello World!!'
-    }
-}
 
 const server = new ApolloServer({
     typeDefs,
