@@ -10,8 +10,7 @@ function Home() {
     const {
         loading,
         data: { getPosts: posts }
-      } = useQuery(FETCH_POSTS_QUERY);
-    
+    } = useQuery(FETCH_POSTS_QUERY);
 
     return (
         <Grid columns={3}>
@@ -33,7 +32,7 @@ function Home() {
     )
 }
 
-const FETCH_POSTS_QUERY = gql`
+export const FETCH_POSTS_QUERY = gql`
     {
         getPosts{
             id
