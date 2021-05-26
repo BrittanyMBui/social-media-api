@@ -8,17 +8,11 @@ import PostCard from '../components/PostCard';
 
 function Home() {
     const { loading, error, data } = useQuery(FETCH_POSTS_QUERY);
-    // if (loading) {
-    //     return 'Loading..';
-    // }
-    // if (error) {
-    //     return `Error: ${error.message}`
-    // }
 
     return (
         <Grid columns={3}>
-        <Grid.Row>
-            <h1>Recent Posts</h1>
+        <Grid.Row className="page-title">
+            <h1>Posts</h1>
         </Grid.Row>
         <Grid.Row>
             { loading ? (
