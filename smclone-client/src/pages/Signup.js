@@ -3,7 +3,8 @@ import { Button, Form } from 'semantic-ui-react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 
-function Signup() {
+function Signup(props) {
+    const [errors, setErrors ] = useState({})
     const [values, setValues] = useState({
         username: '',
         email: '',
@@ -16,8 +17,12 @@ function Signup() {
     }
 
     const [addUser, { loading }] = useMutation(REGISTER_USER, {
-        update(proxy, result){
+        update(_, result){
             console.log(result)
+            props.history.push('/')
+        },
+        onError(err){
+            setErrors(err.graphQLErrors[0].extensions.exception.errors);
         },
         variables: values
     })
@@ -31,7 +36,7 @@ function Signup() {
 
     return (
         <div className="form-container">
-            <Form onSubmit={onSubmit} noValidate>
+            <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
                 <h1>Signup</h1>
                 <Form.Input 
                     label="Username"
@@ -39,6 +44,7 @@ function Signup() {
                     name="username"
                     type="text"
                     value={values.username}
+                    error={errors.username ? true : false}
                     onChange={onChange}
                 />
                 <Form.Input 
@@ -47,6 +53,7 @@ function Signup() {
                     name="email"
                     type="email"
                     value={values.email}
+                    error={errors.email ? true : false}
                     onChange={onChange}
                 />
                 <Form.Input 
@@ -55,6 +62,7 @@ function Signup() {
                     name="password"
                     type="password"
                     value={values.password}
+                    error={errors.password ? true : false}
                     onChange={onChange}
                 />
                 <Form.Input 
@@ -63,12 +71,22 @@ function Signup() {
                     name="confirmPassword"
                     type="password"
                     value={values.confirmPassword}
+                    error={errors.password ? true : false}
                     onChange={onChange}
                 />
                 <Button type="submit" primary>
                     Signup
                 </Button>
             </Form>
+            {Object.keys(errors).length > 0  && (
+                <div className="ui error message">
+                    <ul className="list">
+                        {Object.values(errors).map((value) => (
+                            <li key={value}>{value}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
     )
 }
