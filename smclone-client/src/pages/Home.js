@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import { Grid } from 'semantic-ui-react';
 
+import { AuthContext } from '../context/auth';
 import PostCard from '../components/PostCard';
+import PostForm from '../components/PostForm';
 
 
 function Home() {
+    const { user } = useContext(AuthContext)
     const { loading, error, data } = useQuery(FETCH_POSTS_QUERY);
 
     return (
@@ -15,6 +18,11 @@ function Home() {
             <h1>Posts</h1>
         </Grid.Row>
         <Grid.Row>
+            {user && (
+                <Grid.Column>
+                    <PostForm />
+                </Grid.Column>
+            )}
             { loading ? (
                 <h1>Loading posts..</h1>
             ) : (
