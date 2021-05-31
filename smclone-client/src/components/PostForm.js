@@ -37,6 +37,7 @@ function PostForm () {
     }
 
     return (
+        <>
         <Form onSubmit={onSubmit}>
             <h2>Create a Post:</h2>
             <Form.Field>
@@ -45,12 +46,21 @@ function PostForm () {
                     name="body"
                     onChange={onChange}
                     value={values.body}
+                    error={error ? true : false}
                     />
                 <Button type="submit" color="teal">
                     Submit
                 </Button>
             </Form.Field>
         </Form>
+        {/* {error && (
+            <div className="ui error message">
+                <ul className="list">
+                    <li>{error.graphQLErrors[0].message}</li>
+                </ul>
+            </div>
+        )} */}
+        </>
     )
 }
 

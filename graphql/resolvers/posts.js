@@ -31,9 +31,9 @@ module.exports = {
         async createPost(_, { body }, context) {
             const user = checkAuth(context);
             
-            if (body.trim() === '') {
-                throw new Error('Field required');
-            }
+            // if (body.trim() === '') {
+            //     throw new UserInputError('Field required');
+            // }
 
             const newPost = new Post({
                 body,
